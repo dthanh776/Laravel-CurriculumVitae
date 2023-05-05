@@ -1,0 +1,16 @@
+// loi file vender
+composer install
+mv .env.example .env
+php artisan cache:clear
+composer dump-autoload
+php artisan key:generate
+
+composer update
+copy .env.example .env
+php artisan key:generate
+
+php artisan migrate
+php artisan db:seed 
+php artisan migrate:fresh
+php artisan cache:clear
+php artisan route:clear
